@@ -1,5 +1,30 @@
 # Shiny-Docker
-Repositorio para el proyecto # 1 de la clase Data Product, que consiste en dockerizar una instancia de R Studio, otra de MySQL, conectarlas por medio de un bridge y trabajar dentro de los contenedores.
+A continuación encontrará una guía de como instalar dos contenedores de docker; uno de RStudio, y otro de MySQL, así como una guía de como conectarlos para que se puedan comunicar entre ellos.
+
+## Docker
+
+Lo primero que debe de tener instalado en su máquina es Docker. Si ya lo tiene instalado, puede pasar a la siguiente sección.
+
+### Windows Professional
+
+Si su sistema operativo es Windows professional, refierase a esta guía de instalación: [guía](https://docs.docker.com/docker-for-windows/)
+
+### Windows Home
+
+Si su sistema operativo es Windows Home, refierase a esta guía de instalación: [guía](https://docs.docker.com/docker-for-windows/install-windows-home/)
+
+### MacOS
+
+Si su sistema operativo es Mac OS, refierase a esta guía de instalación: [guia](https://docs.docker.com/docker-for-mac/install/)
+
+### Ubuntu o Ubuntu-Based
+
+Si su sistema operativo es, o está basado en Ubuntu, abra una terminal y escriba:
+
+````
+sudo apt-get update
+sudo apt-get install docker.io
+````
 
 ## R Studio
 
