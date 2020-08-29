@@ -1,1 +1,0 @@
-# Data para el analisis
