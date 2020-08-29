@@ -10,6 +10,14 @@
 
 4. Ejecutar el siguiente comando:
 
-'''
-asdfasdf
-'''
+````
+docker build -t (Nombre que le quiera dar) -f Dockerfile .
+````
+
+5. Ahora que ya tiene el contenedor en su máquina, solo queda ejecutarlo. Para eso poner el siguiente comando desde su terminal:
+
+````
+docker run --rm -p 8787:8787 -e PASSWORD=contraseña_a_su_disposicion [El nombre que le dio al contenedor]
+````
+
+6. El contenedor ya está corriendo, para acceder a su instancia de RStudio, abra un browser y ponga 127.0.0.1:8787
