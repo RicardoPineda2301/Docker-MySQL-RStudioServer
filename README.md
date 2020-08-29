@@ -3,11 +3,11 @@ Repositorio para el proyecto # 1 de la clase Data Product, que consiste en docke
 
 ## R Studio
 
-Para levantar el contenedor de RStudio, referirse a [este link](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/RStudio) en donde encontrará un paso a paso de como hacerlo, así como el Dockerfile y demás recursos necesarios para hacerlo.
+Para levantar el contenedor de RStudio, referirse a [esta guia, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/RStudio) en donde encontrará el procedimiento paso a paso de como hacerlo, así como el Dockerfile y demás recursos necesarios para hacerlo.
 
 ## MySQL
 
-Para levantar el contenedor de MySQL, referirse a [este link](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/MySQL) en donde encontrará una guia paso a paso de como hacerlo.
+Para levantar el contenedor de MySQL, referirse a [esta guia, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/MySQL) en donde encontrará el procedimiento paso a paso de como hacerlo.
 
 ## Conexión
 
