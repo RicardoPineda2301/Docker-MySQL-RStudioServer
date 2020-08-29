@@ -17,9 +17,9 @@ Si su sistema operativo es Windows Home, refierase a esta guía de instalación:
 
 Si su sistema operativo es Mac OS, refierase a esta guía de instalación: [guia](https://docs.docker.com/docker-for-mac/install/)
 
-### Ubuntu o Ubuntu-Based
+### Debian o Debian-Based
 
-Si su sistema operativo es, o está basado en Ubuntu, abra una terminal y escriba:
+Si su sistema operativo es, o está basado en Debian, abra una terminal y escriba:
 
 ````
 sudo apt-get update
