@@ -1,4 +1,4 @@
-# RStudio
+# MySQL
 
 ### Guía de instalación
 
