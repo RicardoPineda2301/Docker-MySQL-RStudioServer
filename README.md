@@ -7,4 +7,14 @@ Para levantar el contenedor de RStudio, referirse a [este link](https://github.c
 
 ## MySQL
 
-as
+Para levantar el contenedor de MySQL, referirse a [este link](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/MySQL) en donde encontrará una guia paso a paso de como hacerlo.
+
+## Conexión
+
+Si ya tiene los dos contenedores listos en su máquina, puede pasar al siguiente paso: la conexión de ellos. Para hacerlo, seguir estos pasos:
+
+1. uno
+
+2. dos
+
+3. tres
