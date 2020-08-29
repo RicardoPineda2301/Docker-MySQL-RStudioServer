@@ -11,7 +11,7 @@
 4. Ejecutar el siguiente comando:
 
 ````
-docker build -t (Nombre que le quiera dar) -f Dockerfile .
+docker build -t [Nombre que le quiera dar] -f Dockerfile .
 ````
 
 5. Ahora que ya tiene el contenedor en su máquina, solo queda ejecutarlo. Para eso poner el siguiente comando desde su terminal:
