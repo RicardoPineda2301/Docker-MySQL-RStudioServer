@@ -26,6 +26,26 @@ sudo apt-get update
 sudo apt-get install docker.io
 ````
 
+## Jalar los Containers
+
+Si usted solamente desea tener los contenedores y hacer la conexión para probarlos sin tener que hacer todo el proceso desde 0, tiene la opción de jalar cada uno individualmente con los siguientes pasos.
+
+1. Abra una terminal en una máquina que tenga Docker instalado
+
+2. Para jalar el contenedor de RStudio, ejecute el comando:
+
+```
+docker pull sebpineda23/rstudio
+```
+
+3. Para jalar el contenedor de MySQL, ejecute el comando:
+
+````
+docker pull sebpineda23/mysql
+````
+
+Por otro lado, si desea hacer todo el proceso de instalación desde 0, siga los siguientes pasos:
+
 ## R Studio
 
 Para levantar el contenedor de RStudio, referirse a [esta guia, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/RStudio) en donde encontrará el procedimiento paso a paso de como hacerlo, así como el Dockerfile y demás recursos necesarios para hacerlo.
