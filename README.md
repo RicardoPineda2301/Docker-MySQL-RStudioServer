@@ -72,7 +72,7 @@ Para levantar el contenedor de MySQL, referirse a [esta guia, ](https://github.c
 
 Si ya tiene los dos contenedores listos en su máquina, puede pasar al siguiente paso: la conexión de ellos. Para hacerlo, seguir estos pasos:
 
-1. Asegurese de que los dos contenedores esten corriendo. Para hacerlo puede correr el siguiente comando y verificar que ambos contenedores salgan como output:
+1. Asegurese de que los dos contenedores esten detenidos. Para hacerlo puede correr el siguiente comando y verificar que ninguno de los contenedores salgan como output:
 
 ````
 docker ps
@@ -81,7 +81,39 @@ docker ps
 2. Si los dos contenedores están activos, el siguiente paso es crear una conexión. Para eso ejecutamos el siguiente comando:
 
 ````
-conex
+docker network create --driver bridge [Nombre que le quiera dar a la conexión]
 ````
 
-3. tres
+3. Ahora que ya tenemos la conexión lista, levantamos ambos contenedores especificando la conexión.
+
+4. Contenedor de MySQL:
+
+````
+docker run -it --network [Nombre que le haya puesto a la conexión] [Nombre de su contenedor de MYSQL]
+````
+
+5. Contenedor de RStudio:
+
+````
+docker run --network [Nombre que le haya puesto a la conexión] -p 8888:8888 -e PASSWORD=[Contraseña que quiera] [Nombre de su contenedor de RStudio]
+````
+
+6. Ahora que ambos contenedores están activos, hay que inspeccionar la conexión para ver que dirección le asigno de IPV4:
+
+````
+docker network inspect [Nombre que le haya puesto a la conexión]
+````
+
+Navegar hasta la parte más baja del output, verificar la dirección que tiene asignada **IPV4Address** y anotarla.
+
+7. Ahora que ya tenemos la dirección asignada, nos vamos a nuestra instancia de RStudio en un browser, en 127.0.0.1:8888 y modificamos la parte de la conexión con la nueva dirección: 
+
+````
+db_user <- 'ricardo'
+db_password <- 'pass'
+db_name <- 'parcial1_dp'
+db_table <- 'video_metadata'
+db_host <- '172.19.0.2' # dirección de IPV4
+db_port <- 3306
+
+````
