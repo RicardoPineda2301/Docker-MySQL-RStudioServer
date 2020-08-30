@@ -48,8 +48,6 @@ docker pull sebpineda23/mysql
 ````
 docker run --name db -p 3306:3306 -d sebpineda23/mysql --secure-file-priv=/home/parcial
 ````
-docker run --name db -p 3306:3306 -d sebpineda23/mysql --secure-file-priv=/home/parcial
-
 Por otro lado, si desea hacer todo el proceso de instalación desde 0, siga los siguientes pasos:
 
 ## R Studio
