@@ -28,7 +28,7 @@ sudo apt-get install docker.io
 
 ## Jalar los Containers
 
-Si usted solamente desea tener los contenedores y hacer la conexión para probarlos sin tener que hacer todo el proceso desde 0, tiene la opción de jalar cada uno individualmente con los siguientes pasos.
+Si usted solamente desea tener los contenedores y hacer la conexión para probarlos sin tener que hacer todo el proceso desde 0, tiene la opción de jalar cada uno individualmente con los siguientes pasos:
 
 1. Abra una terminal en una máquina que tenga Docker instalado
 
