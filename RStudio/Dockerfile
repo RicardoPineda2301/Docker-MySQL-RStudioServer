@@ -6,4 +6,3 @@ RUN mkdir -p /home/rstudio/parcial
 WORKDIR /home/rstudio/parcial
 
 COPY app.R/ /home/rstudio/parcial
-COPY data/ /home/rstudio/parcial
