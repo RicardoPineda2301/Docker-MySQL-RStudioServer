@@ -62,8 +62,16 @@ Para levantar el contenedor de MySQL, referirse a [esta guia, ](https://github.c
 
 Si ya tiene los dos contenedores listos en su máquina, puede pasar al siguiente paso: la conexión de ellos. Para hacerlo, seguir estos pasos:
 
-1. uno
+1. Asegurese de que los dos contenedores esten corriendo. Para hacerlo puede correr el siguiente comando y verificar que ambos contenedores salgan como output:
 
-2. dos
+````
+docker ps
+````
+
+2. Si los dos contenedores están activos, el siguiente paso es crear una conexión. Para eso ejecutamos el siguiente comando:
+
+````
+conex
+````
 
 3. tres
