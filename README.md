@@ -78,7 +78,7 @@ Si ya tiene los dos contenedores listos en su máquina, puede pasar al siguiente
 docker ps
 ````
 
-2. Si los dos contenedores están activos, el siguiente paso es crear una conexión. Para eso ejecutamos el siguiente comando:
+2. Si los dos contenedores están inactivos, el siguiente paso es crear una conexión. Para eso ejecutamos el siguiente comando:
 
 ````
 docker network create --driver bridge [Nombre que le quiera dar a la conexión]
