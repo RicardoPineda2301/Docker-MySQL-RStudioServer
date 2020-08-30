@@ -46,6 +46,8 @@ docker run --rm -p 8787:8787 -e PASSWORD=contraseña_a_su_disposicion sebpineda2
 
 4. Para entrar a su instancia de RStudio, abra un browser y coloque: 127.0.0.1:8787
 
+**Nota:** El usuario default es "Rstudio" y la contraseña es la que especificó en el comando anterior.
+
 5. Para jalar el contenedor de MySQL, ejecute el comando:
 
 ````
