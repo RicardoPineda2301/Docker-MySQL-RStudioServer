@@ -38,12 +38,20 @@ Si usted solamente desea tener los contenedores y hacer la conexión para probar
 docker pull sebpineda23/rstudio
 ```
 
-3. Para jalar el contenedor de MySQL, ejecute el comando:
+3. Para ejecutar el contenedor de RStudio, es importante que lo ejecute de la siguiente manera:
+
+````
+docker run --rm -p 8787:8787 -e PASSWORD=contraseña_a_su_disposicion sebpineda23/rstudio
+````
+
+4. Para entrar a su instancia de RStudio, abra un browser y coloque: 127.0.0.1:8787
+
+5. Para jalar el contenedor de MySQL, ejecute el comando:
 
 ````
 docker pull sebpineda23/mysql
 ````
-4. Para ejecutar el contenedor de MySQL, es importante que lo ejecute de la siguiente manera:
+6. Para ejecutar el contenedor de MySQL, es importante que lo ejecute de la siguiente manera:
 
 ````
 docker run --name db -p 3306:3306 -d sebpineda23/mysql --secure-file-priv=/home/parcial
