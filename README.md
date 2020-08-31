@@ -89,13 +89,13 @@ docker network create --driver bridge [Nombre que le quiera dar a la conexión]
 4. Contenedor de MySQL:
 
 ````
-docker run -it --network [Nombre que le haya puesto a la conexión] [Nombre de su contenedor de MYSQL]
+docker run -it --network [Nombre que le haya puesto a la conexión] [Nombre de su contenedor de MYSQL] --secure-file-priv=/home/parcial
 ````
 
 5. Contenedor de RStudio:
 
 ````
-docker run --network [Nombre que le haya puesto a la conexión] -p 8888:8888 -e PASSWORD=[Contraseña que quiera] [Nombre de su contenedor de RStudio]
+docker run --network [Nombre que le haya puesto a la conexión] -p 8787:8787 -e PASSWORD=[Contraseña que quiera] [Nombre de su contenedor de RStudio]
 ````
 
 6. Ahora que ambos contenedores están activos, hay que inspeccionar la conexión para ver que dirección le asigno de IPV4:
@@ -109,11 +109,11 @@ Navegar hasta la parte más baja del output, verificar la dirección que tiene a
 7. Ahora que ya tenemos la dirección asignada, nos vamos a nuestra instancia de RStudio en un browser, en 127.0.0.1:8888 y modificamos la parte de la conexión con la nueva dirección: 
 
 ````
-db_user <- 'ricardo'
-db_password <- 'pass'
-db_name <- 'parcial1_dp'
-db_table <- 'video_metadata'
-db_host <- '172.19.0.2' # dirección de IPV4
-db_port <- 3306
-
+my_db <- dbPool(
+  RMySQL::MySQL(), 
+  dbname = "parcial1_dp",
+  host = "X.X.X.X", ## Cambiar según su conexión
+  username = "ricardo", ## Cambiar si le cambió el nombre en el Dockerfile
+  password = "pass" ## Cambiar si le cambió el nombre en el Dockerfile
+)
 ````
