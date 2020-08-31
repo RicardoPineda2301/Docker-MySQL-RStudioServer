@@ -93,22 +93,22 @@ df_videos <- na.omit(df_videos)
 
 ### Total de vistas
 ```{r}
-flexdashboard::valueBox(sum(df_videos$Vistas), icon = "fa-eye", color = 'red')
+flexdashboard::valueBox(sum(df_videos$Vistas), icon = "fa-eye", color = 'primary')
 ```
 
 ### Total de likes
 ```{r}
-flexdashboard::valueBox(sum(df_videos$Likes), icon = "fa-thumbs-up", color = 'blue')
+flexdashboard::valueBox(sum(df_videos$Likes), icon = "fa-thumbs-up", color = 'success')
 ```
 
 ### Total de no me gusta
 ```{r}
-flexdashboard::valueBox(sum(df_videos$`No me gusta`), icon = "fa-thumbs-down", color = 'green')
+flexdashboard::valueBox(sum(df_videos$`No me gusta`), icon = "fa-thumbs-down", color = 'danger')
 ```
 
 ### Total de comentarios
 ```{r}
-flexdashboard::valueBox(sum(df_videos$Comentarios), icon = "fa-comments", color = 'orange')
+flexdashboard::valueBox(sum(df_videos$Comentarios), icon = "fa-comments", color = 'warning')
 ```
 
 
