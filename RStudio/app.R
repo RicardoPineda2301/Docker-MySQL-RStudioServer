@@ -16,9 +16,9 @@ library(shinythemes)
 my_db <- dbPool(
     RMySQL::MySQL(), 
     dbname = "parcial1_dp",
-    host = "127.0.0.1",
-    username = "root",
-    idleTimeout = 20000
+    host = "172.20.0.2", ## Cambiarlo según su conexión
+    username = "ricardo",
+    password = "pass"
     #password = "root"
 )
 
@@ -37,14 +37,31 @@ df_metadata <- df_metadata %>%
     rename(
         id = video_id,
         'Título' = title,
-        'Descripción' = description,
-        'Código' = iframe,
         Enlace = link
     )
 df_metadata <- df_metadata[!duplicated(df_metadata$id), ]
-df_stats$id <- substr(df_stats$id, 1, 10) 
-df_videos <- merge(df_metadata, df_stats, by ="id")
-cols <- c(1, 2, 5, 6, 7, 8, 9, 10)
+df_metadata$id <- substr(df_metadata$id, 1, 10)
+df_stats$id <- substr(df_stats$id, 1, 10)
+df_video_data <- as.data.frame(my_db %>% tbl("videos"))
+df_video_data <- df_video_data[!duplicated(df_video_data$content_video_id), ]
+df_video_data$content_video_id <- substr(df_video_data$content_video_id, 1, 10)
+df_video_data$date <- parse_date(df_video_data$date)
+df_video_data <- df_video_data %>%
+    rename(
+        identificador = id,
+        id = content_video_id,
+        'Fecha' = date
+    )
+
+df_metadata$id = as.character(df_metadata$id)
+df_stats$id = as.character(df_stats$id)
+df_video_data$id = as.character(df_video_data$id)
+
+df_videos <- merge(df_metadata, df_stats, all = TRUE, by ="id")
+df_videos <- merge(df_videos, df_video_data, all = TRUE, by = "id")
+cols <- c(1, 2, 5, 6, 7, 8, 9, 10, 12)
+
+df_videos <- na.omit(df_videos)
 
 # Define UI for application that draws a histogram
 ui <- navbarPage("Academática Dashboard",
