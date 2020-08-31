@@ -1,15 +1,15 @@
 ---
 title: "Academática"
 output:
+  flexdashboard::flex_dashboard: null
+  orientation: rows
   html_document:
     df_print: paged
-  orientation: rows
-  flexdashboard::flex_dashboard: null
 vertical_layout: fill
 theme: spacelab
 ---
   
-  
+---
 ####################################################################
  Si al momento de correr el código le da error de conexión,        #
  Cambierla en la conexión que se llama "my_db"                     #
@@ -18,8 +18,11 @@ theme: spacelab
                                                                    # 
  Nota: Si excede las 16 conexiones, solo reinicie R:               #
         Command/Ctrl + Shift + F10                                 #
+                                                                   #
+ Nota2: Para visualizar el resultado. Haga click en:               #
+            Knit -> knit to flex_dashboard                         #
 ####################################################################
-
+---
   
 ```{r}
 library(flexdashboard)
