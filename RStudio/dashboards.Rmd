@@ -1,0 +1,191 @@
+---
+title: "Academática"
+output:
+  html_document:
+    df_print: paged
+  orientation: rows
+  flexdashboard::flex_dashboard: null
+vertical_layout: fill
+theme: spacelab
+---
+  
+  
+####################################################################
+ Si al momento de correr el código le da error de conexión,        #
+ Cambierla en la conexión que se llama "my_db"                     #
+ Si al guardarla le dice que es read_only, haga una nueva carpeta  #
+ Y guarde una copia de este código en ella. Trabaje en la copia    #
+                                                                   # 
+ Nota: Si excede las 16 conexiones, solo reinicie R:               #
+        Command/Ctrl + Shift + F10                                 #
+####################################################################
+
+  
+```{r}
+library(flexdashboard)
+library(readr)
+library(dplyr)
+library(DT)
+library(RMySQL)
+library(pool)
+library(xts)
+library(lubridate)
+library(stringr)
+library(parsedate)
+library(dygraphs)
+library(stringi)
+
+my_db <- dbPool(
+  RMySQL::MySQL(), 
+  dbname = "parcial1_dp",
+  host = "172.20.0.2", ## Cambiar según su conexión
+  username = "ricardo",
+  password = "pass"
+)
+df_stats <- as.data.frame(my_db %>% tbl("video_stats"))
+df_stats <- df_stats[!duplicated(df_stats$id), ]
+df_stats <- df_stats %>%
+  rename(
+    Vistas = viewCount,
+    Likes = likeCount,
+    'No me gusta' = dislikeCount,
+    Favoritos = favoriteCount,
+    Comentarios = commentCount
+  )
+df_metadata <- as.data.frame(my_db %>% tbl("video_metadata")) 
+df_metadata <- df_metadata %>%
+  rename(
+    id = video_id,
+    'Título' = title,
+    Enlace = link
+  )
+df_metadata <- df_metadata[!duplicated(df_metadata$id), ]
+df_metadata$id <- substr(df_metadata$id, 1, 10)
+df_stats$id <- substr(df_stats$id, 1, 10)
+df_video_data <- as.data.frame(my_db %>% tbl("videos"))
+df_video_data <- df_video_data[!duplicated(df_video_data$content_video_id), ]
+df_video_data$content_video_id <- substr(df_video_data$content_video_id, 1, 10)
+df_video_data$date <- parse_date(df_video_data$date)
+df_video_data <- df_video_data %>%
+  rename(
+    identificador = id,
+    id = content_video_id,
+    'Fecha' = date
+  )
+
+df_metadata$id = as.character(df_metadata$id)
+df_stats$id = as.character(df_stats$id)
+df_video_data$id = as.character(df_video_data$id)
+
+df_videos <- merge(df_metadata, df_stats, all = TRUE, by ="id")
+df_videos <- merge(df_videos, df_video_data, all = TRUE, by = "id")
+cols <- c(1, 2, 5, 6, 7, 8, 9, 10, 12)
+
+df_videos <- na.omit(df_videos)
+```
+
+# Estadísticas de Academática 
+
+## Vídeos
+
+### Total de vistas
+```{r}
+flexdashboard::valueBox(sum(df_videos$Vistas), icon = "fa-eye", color = 'red')
+```
+
+### Total de likes
+```{r}
+flexdashboard::valueBox(sum(df_videos$Likes), icon = "fa-thumbs-up", color = 'blue')
+```
+
+### Total de no me gusta
+```{r}
+flexdashboard::valueBox(sum(df_videos$`No me gusta`), icon = "fa-thumbs-down", color = 'green')
+```
+
+### Total de comentarios
+```{r}
+flexdashboard::valueBox(sum(df_videos$Comentarios), icon = "fa-comments", color = 'orange')
+```
+
+
+## A través del tiempo
+
+### Vistas a través del tiempo
+```{r}
+df_fecha_likes <- df_videos %>% group_by(as.yearmon(Fecha) ) %>% summarise(total_vistas = sum(Vistas) / 1e6, total_likes = sum(Likes), total_coment = sum(Comentarios))
+time_series <- xts(df_fecha_likes[, c(2, 3, 4)], order.by = df_fecha_likes$`as.yearmon(Fecha)`)
+dygraph(time_series[, 1]) %>%
+  dyAxis("y", label = "Número de vistas en Millones") %>%
+  dyAxis("x", label = "Fecha de publicación") %>%
+  dySeries("total_vistas", label = "Vistas") %>%
+  dyOptions(stackedGraph = TRUE) %>%
+  dyRangeSelector(height = 20)
+```
+
+# Tabla de vídeos 
+
+## Vídeos
+
+### Información de los vídeos
+```{r}
+df_videos[, cols] %>% DT::datatable(options = list(
+  pageLength = 5
+),
+rownames = FALSE,
+filter = 'top'
+) %>% formatDate(9, "toLocaleString")
+```
+
+# Análisis gráfico
+
+##
+
+### Likes VS Comentarios
+```{r}
+library(rbokeh)
+p <- figure() %>%
+  ly_points(Likes, Comentarios, data = df_videos,
+            hover = list(`Título`, Likes, Comentarios))
+p
+```
+
+
+### Likes VS Vistas
+```{r}
+library(rbokeh)
+p <- figure() %>%
+  ly_points(Likes, Vistas, data = df_videos,
+            hover = list(`Título`, Likes, Vistas))
+p
+```
+
+# Distribución de los datos
+
+##
+
+### Distribución de Likes
+```{r}
+h <- figure(width = 1000, height = 400) %>%
+  ly_hist(Likes, data = df_videos, breaks = 40) %>%
+  ly_density(Likes, data = df_videos)
+h
+```
+
+### Distribución de Comentarios
+```{r}
+h <- figure(width = 1000, height = 400) %>%
+  ly_hist(Comentarios, data = df_videos, breaks = 40) %>%
+  ly_density(Comentarios, data = df_videos)
+h
+```
+
+## 
+
+### Distribución de Vistas
+```{r}
+h <- figure(width = 2000, height = 400) %>%
+  ly_hist(Vistas, data = df_videos, breaks = 100) %>%
+  ly_density(Vistas, data = df_videos)
+h
+```
