@@ -106,7 +106,7 @@ docker network inspect [Nombre que le haya puesto a la conexión]
 
 Navegar hasta la parte más baja del output, verificar la dirección que tiene asignada **IPV4Address** y anotarla.
 
-7. Ahora que ya tenemos la dirección asignada, nos vamos a nuestra instancia de RStudio en un browser, en 127.0.0.1:8888 y modificamos la parte de la conexión con la nueva dirección: 
+7. Ahora que ya tenemos la dirección asignada, nos vamos a nuestra instancia de RStudio en un browser, en 127.0.0.1:8787 y modificamos la parte de la conexión con la nueva dirección: 
 
 ````
 my_db <- dbPool(
