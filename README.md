@@ -62,11 +62,11 @@ Por otro lado, si desea hacer todo el proceso de instalación desde 0, siga los 
 
 ## R Studio
 
-Para levantar el contenedor de RStudio, referirse a [esta guia, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/RStudio) en donde encontrará el procedimiento paso a paso de como hacerlo, así como el Dockerfile y demás recursos necesarios para hacerlo.
+Para levantar el contenedor de RStudio, referirse a [esta guía, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/RStudio) en donde encontrará el procedimiento paso a paso de como hacerlo, así como el Dockerfile y demás recursos necesarios para hacerlo.
 
 ## MySQL
 
-Para levantar el contenedor de MySQL, referirse a [esta guia, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/MySQL) en donde encontrará el procedimiento paso a paso de como hacerlo.
+Para levantar el contenedor de MySQL, referirse a [esta guía, ](https://github.com/RicardoPineda2301/Shiny-Docker/tree/master/MySQL) en donde encontrará el procedimiento paso a paso de como hacerlo.
 
 ## Conexión
 
