@@ -12,7 +12,7 @@ theme: spacelab
 ---
 ####################################################################
  Si al momento de correr el código le da error de conexión,        #
- Cambierla en la conexión que se llama "my_db"                     #
+ Cambiela en la conexión que se llama "my_db"                     #
  Si al guardarla le dice que es read_only, haga una nueva carpeta  #
  Y guarde una copia de este código en ella. Trabaje en la copia    #
                                                                    # 
